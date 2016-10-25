@@ -1,0 +1,1266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="Css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Css/bootstrap.css" rel="stylesheet" />
+    <link href="Css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="JavaS/bootstrap.js"></script>
+    <script src="JavaS/npm.js"></script>
+    <script src="JavaScript.js"></script>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <ul class="nav nav-pills nav-justified navbar-default center-block" style="width:70%">
+        <li role="presentation" id="diag"><a href="Diagnostik.html">Diagnostik</a></li>
+        <li role="presentation" id="kir" class="active"><a href="Opdata.html">Opdata</a></li>
+       
+
+    </ul>
+    <br />
+    <div class="panel panel-default center-block" style="width:70%">
+        <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Initierat av</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="Lisa Tykosson" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Inrapportör</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="Lisa Tykosson" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Inrapporterande enhet</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="NUS kirurgen" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Läkare</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Inrapporteringsdatum</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="2016-08-24" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="width:70%">
+        <div class="panel panel-default panel-heading panel-title">Primära uppgifter</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Förlängd väntetid till behandling pga patientens val</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Resektion/Ablation av tumören</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="rest" onchange="alter()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="display:none; width:70%" id="alt1">
+        <div class="panel panel-default panel-heading panel-title">Ej resektion</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Exploration</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="opexpo" onchange="datumex()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Ej explorerad</option>
+                        <option value="2">Exploration utan resektion</option>
+                    </select>
+                </div>
+            </div>
+            <div id="behandlingsstrat" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Datum för beslut av förändrad behandlingsstrategi</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div id="ex" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Datum för exploration</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Orsak</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Progress av sjukdom</option>
+                        <option value="2">Dåligt allmäntillstånd</option>
+                        <option value="3">Annat</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="h5"><b> Kliniskt tumörstadium (TNM7)</b></div>
+            <hr />
+            <div class="row form-group">
+                <label class="control-label col-sm-3">T-Stadium</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">T0</option>
+                        <option value="2">Tis</option>
+                        <option value="3">T1</option>
+                        <option value="4">T2</option>
+                        <option value="5">T3</option>
+                        <option value="6">T4</option>
+                        <option value="7">TX-</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">N-Stadium</label>
+                <div class="col-xs-3">
+                    <select class="dropdown form-control active">
+                        <option value="0">--Välj--</option>
+                        <option value="1">N0</option>
+                        <option value="2">N1</option>
+                        <option value="3">N2</option>
+                        <option value="4">N3</option>
+                        <option value="5">NX</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">M-Stadium</label>
+                <div class="col-xs-3">
+                    <select class="dropdown form-control active">
+                        <option value="0">--Välj--</option>
+                        <option value="1">M0</option>
+                        <option value="2">M1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default center-block" style="display:none; width:70%" id="alt2">
+        <div class="panel panel-default panel-heading panel-title">Komorbiditet</div>
+        <div class="panel panel-body">
+
+            <div class="row form-group">
+
+                <label class="control-label col-sm-3">Rökare</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja (inkl de som slutat < 1 år sedan)</option>
+                        <option value="3">F.d. rökare (> 1 år sedan rökstopp)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="h5"><b>Charlson komorbiditetsindex</b></div>
+                <hr />
+
+            </div>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>1 poäng</th>
+                        <th>2 poäng </th>
+                        <th>3 poäng</th>
+                        <th>6 poäng</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Hjärtinfarkt </td>
+                        <td><input type="checkbox" class="y" onchange="charlson()" />  Hemiplegi</td>
+                        <td><input type="checkbox" class="z" onchange="charlson()" />  Måttlig-svår leversvikt </td>
+                        <td><input type="checkbox" class="w" onchange="charlson()" />  Malign tumör med metastas </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Hjärtsvikt </td>
+                        <td><input type="checkbox" class="y" onchange="charlson()" />  Måttlig-svår njursvikt</td>
+                        <td></td>
+                        <td><input type="checkbox" class="w" onchange="charlson()" />  AIDS </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Perifer kärlsjukdom </td>
+                        <td><input type="checkbox" class="y" onchange="charlson()" />  Diabetes med organskada </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Demens</td>
+                        <td><input type="checkbox" class="y" onchange="charlson()" />  Tumör utan metastas </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Cerebrovaskulär sjukdom </td>
+                        <td><input type="checkbox" class="y" onchange="charlson()" />  Leukemi </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  KOL</td>
+                        <td><input type="checkbox" class="y" onchange="charlson()" />  Lymfom </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Bindvävssjukdom </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Magsår</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Kronisk leversjukdom </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="x" onchange="charlson()" />  Diabetes utan organskada </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Charlson komorbiditetsindex totalt</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" id="charlstot" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">
+                    Komorbiditet enligt ASA-klassifikationen  <a data-toggle="tooltip" title="<img src='asaklass.png' />">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                    </a>
+                </label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="panel panel-default center-block" style="width:70%; display:none" id="opdat">
+        <div class="panel panel-default panel-heading panel-title">Operationsdata</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Typ av ingrepp</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="optyp" onchange="opan()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Endoskopisk behandling</option>
+                        <option value="2">Partiell resektion ventrikel</option>
+                        <option value="3">Gastrektomi</option>
+                        <option value="4">Partiell resektion esofagus</option>
+                        <option value="5">Esofagektomi</option>
+                        <option value="6">Esofagogastrektomi</option>
+                        <option value="7">Annat</option>
+                    </select>
+                </div>
+            </div>
+            <div id="anop" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Sammanfattande namn på ingrepp</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Opkod</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" id="op" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Rekommenderad opkod</label>
+                    <div class="col-xs-3">
+                        <select class="dropdown active form-control">
+                            <option value="0">--Välj--</option>
+                            <option value="1">JCA05</option>
+                            <option value="2">JCA45</option>
+                            <option value="3">JCA96</option>
+                            <option value="4">JDA05</option>
+                            <option value="5">JDA45</option>
+                            <option value="6">JDA52</option>
+                            <option value="7">JDA63</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" id="gastro" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Rekommenderad opkod</label>
+                    <div class="col-xs-3">
+                        <select class="dropdown active form-control">
+                            <option value="0">--Välj--</option>
+                            <option value="1">JCC00</option>
+                            <option value="2">JCC10</option>
+                            <option value="3">JCC11</option>
+                            <option value="4">JCC20</option>
+                            <option value="5">JCC30</option>
+                            <option value="6">JCC96</option>
+                            <option value="7">JCC97</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Rekommenderad opkod 2</label>
+                    <div class="col-xs-3">
+                        <select class="dropdown active form-control">
+                            <option value="0">--Välj--</option>
+                            <option value="1">JDD00</option>
+                            <option value="2">JDD96</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container-fluid" id="opkoder" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Ytterligare opkoder</label>
+                    <div class="col-xs-3">
+                        <select class="dropdown active form-control" id="yopkod" onchange="fleropkod()">
+                            <option value="0">--Välj--</option>
+                            <option value="1">Nej</option>
+                            <option value="2">Ja</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" id="yttopkod" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Opkod</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Opkod</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Opkod</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Opkod</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Operationsdatum</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Operationsstart</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="tt-mm" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Operationsslut</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" placeholder="tt-mm" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="width:70%; display:none" id="ends">
+        <div class="panel panel-default panel-heading panel-title">Endoskopisk behandling</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Endoskopisk mucosaresektion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Endoskopisk submucosadissektion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Radiofrekvensabladering - RFA</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Argonplasmakoagulering - APC</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Parisklassifikation (enbart för ytliga tumörer lämpade för endoskopisk resektion)</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Typ I "Polyploid"</option>
+                        <option value="2">Typ IIa "Flat and slightly elevated"</option>
+                        <option value="3">Typ IIb "Flat and level"</option>
+                        <option value="4">Typ IIc "Flat and depressed"</option>
+                        <option value="5">Typ III "Ulcerated"</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="width:70%; display:none" id="res">
+        <div class="panel panel-default panel-heading panel-title">Resektionskirurgi</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Elektiv/akut operation</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Elektiv op</option>
+                        <option value="2">Akut op</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Perop blöding i ml</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Peroperativ vikt i kg</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Peroperativ längd i cm</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Preoperativ kemoterapi</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="prekemo" onchange="pkemo()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="prek" style="display:none">
+                <label class="control-label col-sm-3">Behandlande sjukhus/klinik</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Rullista här--</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Preoperativ radioterapi</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="preradio" onchange="pradio()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="prer" style="display:none">
+                <label class="control-label col-sm-3">Behandlande sjukhus/klinik</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Rullista här--</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Tidpunkt för neoadjuvant behandlingsstart</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Neoadjuvant behandlingsslut (tidpunkt för sista behandlingsdag, radio- eller kemoterapi)</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Preoperativ PEG</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Preoperativ stent</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Halsincision</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Operationsbeskrivning thorax</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="thor" onchange="thorax()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Ingen thoraxdissektion</option>
+                        <option value="2">Kombinerat sammanhängande thorakoabdominellt snitt</option>
+                        <option value="3">Thoraskopi</option>
+                        <option value="4">Thoraskopi med konvertering</option>
+                        <option value="5">Thorakotomi</option>
+                        <option value="6">Thorakotomi</option>
+                        <option value="7">Annan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="annanthorax" style="display:none">
+                <label class="control-label col-sm-3">Specificera</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Operationsbeskrivning buk</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="buk" onchange="opbuk()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Ingen</option>
+                        <option value="2">Laparotomi</option>
+                        <option value="3">Laparoskopi</option>
+                        <option value="4">Laparoskopi med konvertering till öppen kir</option>
+                        <option value="5">Annan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="annanbuk" style="display:none">
+                <label class="control-label col-sm-3">Specificera</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Esofagusresektion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Ingen esofagusresektion</option>
+                        <option value="2">Intraabdominella</option>
+                        <option value="3">Distala intrathorakala 1/3, upp till nivå m nedre lungvenen</option>
+                        <option value="4">Distala intrathorakala 2/3 upp till nivån m tracheabifurkationen/v azygos</option>
+                        <option value="5">Hela intrathorakala</option>
+                        <option value="6">Cervikala</option>
+                        <option value="7">Cervikala + intrathorakala + intraabdominella</option>
+                        <option value="8">Lokal excision av esofagus</option>
+                        <option value="9">Annan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="annaneso" style="display:none">
+                <label class="control-label col-sm-3">Specificera</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Ventrikelresektion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="vent">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Ingen ventrikelresektion</option>
+                        <option value="2">Distala</option>
+                        <option value="3">Distala samt mellersta</option>
+                        <option value="4">Hela</option>
+                        <option value="5">Proximala</option>
+                        <option value="6">Proximala och mellersta</option>
+                        <option value="7">Minorsidan</option>
+                        <option value="8">Lokal excision av ventrikel</option>
+                        <option value="9">Endoskopisk mucosaresektion ventrikel (EMR)</option>
+                        <option value="10">Endoskopisk submucosadissektion ventrikel (ESD)</option>
+                        <option value="11">Annan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="annanventr" style="display:none">
+                <label class="control-label col-sm-3">Specificera</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="width:70%; display:none" id="lymfk">
+        <div class="panel panel-default panel-heading panel-title">Utrymda lymfkörtelstationer</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Utrymda lymfkörtelstationer thorax</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="ultho" onchange="ulfktho()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+
+                    </select>
+                </div>
+            </div>
+            <div id="lymftho" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Cervikala</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Paratakela</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Subcarinala</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Höger huvudbronk</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Vänster huvudbronk</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Paraesofaeala - mellersta thorakala mediastium</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Paraesofaeala - nedre thorakala mediastium</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Utrymda lymfkörtelstationer buk</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="ulbuk" onchange="ulfkbuk()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+
+                    </select>
+                </div>
+            </div>
+            <div id="lymfbuk" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Cardia höger</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Cardia vänster</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Curvatura minor</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Curvatura major</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Suprapylorala</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Infrapylorala</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">A gastrica sin</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">A hepatica</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Trunus coeliacus</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Mjälthilius</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">A lienais</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Hepatoduodenala lig</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Posteriora pancreashuvudet</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Mesenteriarkärlsroten</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Mesocolon transversum</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Paraaortala</label>
+                    <div class="col-xs-2">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="width:70%; display:none" id="yres">
+        <div class="panel panel-default panel-heading panel-title">Ytterligare resektion</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Ytterligare resektion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="yttres" onchange="yresekt()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+
+                    </select>
+                </div>
+            </div>
+            <div id="yttre" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Mjältexstirpation</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Pancreasresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Colonresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Leverresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Diafragmaresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Resektion av ductus thoracicus</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Resektion av vena azygos</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Lungresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Perikardresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Larynxresektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Annan resektion</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" class="checkbox" id="anspec" onchange="specres()" />
+                    </div>
+                </div>
+            </div>
+            <div id="anyttres" style="display:none">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Specificera</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Bursektomi</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Omenektomi</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Rekonstruktion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control" id="rekon" onchange="anreko()">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Ingen (inkl blind slutn, framläggn av faryngostomi el annan stomi till hud)</option>
+                        <option value="2">Dist ventrikelresektion m gastroduodenostomi (BI)</option>
+                        <option value="3">Ventrikelresektion m gastrojejunostomi och enteroanastomos (BII)</option>
+                        <option value="4">Ventrikelresektion m gastrojejunostomi utan enteroanastomos (BII)</option>
+                        <option value="5">Ventrikelresektion m gastrojejunostomi ad modum Roux-en-Y</option>
+                        <option value="6">Roux-en-Y esofago-jejunostomi</option>
+                        <option value="7">Roux-en-Y esofago-jejunostomi m reservoir</option>
+                        <option value="8">Tunntarmsinterposition (esofagus till ventrikel el duodenum)</option>
+                        <option value="9">Interponerad tunntarmsreservoar (esofagus till duodenum)</option>
+                        <option value="10">Interponerad colon-reservoar (esofagus till duodenum)</option>
+                        <option value="11">Ventrikeltub till esofagus</option>
+                        <option value="12">Ventrikel till esofagus</option>
+                        <option value="13">Coloninterposition (esofagus till ventrikel el duodenum)</option>
+                        <option value="14">Ileocekal pouch (esofagus till duodenum)</option>
+                        <option value="15">Annan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" id="reko" style="display:none">
+                <label class="control-label col-sm-3">Specificera</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Suturteknik anastomos (vid flera anastomoser anges den mest proximala)</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Handsydd</option>
+                        <option value="2">Cirkulärt staplad</option>
+                        <option value="3">Linjärt staplad</option>
+                        <option value="4">Linjärt staplad + handsydd</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Anastomosnivå (vid flera anastomoser se suturtektnik)</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Buk</option>
+                        <option value="2">Vena azygos/tracheabifurkationen</option>
+                        <option value="3">Hiatus</option>
+                        <option value="4">Pleuratopp</option>
+                        <option value="5">Nedre lungvenen</option>
+                        <option value="6">Hals</option>
+                        <option value="7">Ej tillämpbart</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default center-block" style="width:70%; display:none" id="bed">
+        <div class="panel panel-default panel-heading panel-title">Postoperativ bedömning</div>
+        <div class="panel panel-body">
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Definitiv tumörlokal - postoperativ bedömning av diagnoskod (ICD10)</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">C15.0 Cervikala esofagus</option>
+                        <option value="2">C15.3 Övre tredjedelen av esofagus</option>
+                        <option value="3">C15.4 Mellersta tredjedelen av esofagus</option>
+                        <option vlaue="4">C15.5 Nedre tredjedelen av esofagus</option>
+                        <option value="5">C15.8 Malign tumör i esofagus m övergripande växt</option>
+                        <option value="6">C15.9 Matstrupen UNS</option>
+                        <option value="7">D00.1 Cardia Typ I</option>
+                        <option value="8">C16.0.A Cardia Typ II</option>
+                        <option value="9">C16.0.B Cardia Typ III</option>
+                        <option value="10">C16.0X Ej bestämbar</option>
+                        <option value="11">C16.1 Fundus (övre delen)</option>
+                        <option value="12">C16.2 Corpus (mellersta delen)</option>
+                        <option value="13">C16.3 Antrum (nedre delen)</option>
+                        <option value="14">C16.4 Pylorus (nedre magmunnen)</option>
+                        <option value="15">C16.5 Curvatura minor UNS</option>
+                        <option value="16">C16.6 Curvatura major UNS</option>
+                        <option value="17">C16.8 Multifokal lok</option>
+                        <option value="18">C16.9 Magsäck UNS</option>
+                        <option value="19">D00.2 Cancer in situ ventrikel</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Operatörens bedömning av tumörresektion</label>
+                <div class="col-xs-3">
+                    <select class="dropdown active form-control">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Kurativ</option>
+                        <option value="2">Gränsfall kuraitv/palliativ</option>
+                        <option value="3">Palliativ</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+        </div>
+    <br/>
+    <br/>
+            <script type="text/javascript">
+                $('a[data-toggle="tooltip"]').tooltip({
+
+                    placement: 'top',
+                    html: true
+                });
+
+
+                function charlson() {
+                    var x = document.getElementsByClassName("x"),
+                     count = 0;
+
+                    for (var i = 0; i < x.length; i++) {
+                        if (x[i].checked == true) {
+                            count++;
+                            document.getElementById("charlstot").value = count;
+                        }
+
+                    }
+                }
+
+
+                function alter() {
+                    if
+                        (document.getElementById("rest").selectedIndex == "1") {
+                        document.getElementById("alt1").style.display = "block"
+                        document.getElementById("alt2").style.display = "none"
+                        document.getElementById("opdat").style.display = "none";
+                    }
+                    else if (
+                        document.getElementById("rest").selectedIndex == "2") {
+                        document.getElementById("alt2").style.display = "block"
+                        document.getElementById("opdat").style.display = "block"
+                        document.getElementById("alt1").style.display = "none";
+                    }
+                    else {
+                        document.getElementById("alt1").style.display = "none"
+                        document.getElementById("opdat").style.display = "none"
+                        document.getElementById("alt2").style.display = "none";
+                    }
+
+                }
+                function opan() {
+                    if (document.getElementById("optyp").selectedIndex == "7") {
+                        document.getElementById("anop").style.display = "block"
+                        document.getElementById("opkoder").style.display = "block"
+                        document.getElementById("ends").style.display = "none"
+                        document.getElementById("bed").style.display = "none"
+                        document.getElementById("yres").style.display = "none"
+                        document.getElementById("res").style.display = "none"
+                        document.getElementById("gastro").style.display = "none"
+                        document.getElementById("lymfk").style.display = "none"
+                        document.getElementById("op").style.display = "none";
+                    }
+                    else if (
+                        document.getElementById("optyp").selectedIndex == "1") {
+                        document.getElementById("op").style.display = "block"
+                        document.getElementById("ends").style.display = "block"
+                        document.getElementById("opkoder").style.display = "block"
+                        document.getElementById("bed").style.display = "none"
+                        document.getElementById("res").style.display = "none"
+                        document.getElementById("yres").style.display = "none"
+                        document.getElementById("anop").style.display = "none"
+                        document.getElementById("lymfk").style.display = "none"
+                        document.getElementById("gastro").style.display = "none";
+                    }
+                    else if (
+                        document.getElementById("optyp").selectedIndex == "6") {
+                        document.getElementById("op").style.display = "none"
+                        document.getElementById("ends").style.display = "none"
+                        document.getElementById("anop").style.display = "none"
+                        document.getElementById("bed").style.display = "block"
+                        document.getElementById("res").style.display = "block"
+                        document.getElementById("yres").style.display = "block"
+                        document.getElementById("opkoder").style.display = "block"
+                        document.getElementById("lymfk").style.display = "block"
+                        document.getElementById("gastro").style.display = "block";
+
+                    }
+
+                    else {
+                        document.getElementById("anop").style.display = "none"
+                        document.getElementById("op").style.display = "none"
+                        document.getElementById("ends").style.display = "none"
+                        document.getElementById("res").style.display = "none"
+                        document.getElementById("yres").style.display = "none"
+                        document.getElementById("bed").style.display = "none"
+                        document.getElementById("lymfk").style.display = "none"
+                        document.getElementById("opkoder").style.display = "none"
+                        document.getElementById("gastro").style.display = "none";
+                    }
+                }
+                function fleropkod() {
+                    if (document.getElementById("yopkod").selectedIndex == "2") {
+                        document.getElementById("yttopkod").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("yttopkod").style.display = "none";
+                    }
+                }
+                function pradio() {
+                    if (document.getElementById("preradio").selectedIndex == "2") {
+                        document.getElementById("prer").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("prer").style.display = "none";
+                    }
+                }
+                function pkemo() {
+                    if (document.getElementById("prekemo").selectedIndex == "2") {
+                        document.getElementById("prek").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("prek").style.display = "none";
+                    }
+                }
+                function thorax() {
+                    if (document.getElementById("thor").selectedIndex == "7") {
+                        document.getElementById("annanthorax").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("annanthorax").style.display = "none";
+                    }
+                }
+                function opbuk() {
+                    if (document.getElementById("buk").selectedIndex == "7") {
+                        document.getElementById("annanbuk").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("annanbuk").style.display = "none";
+                    }
+                }
+
+                function ulfktho() {
+                    if (document.getElementById("ultho").selectedIndex == "2") {
+                        document.getElementById("lymftho").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("lymftho").style.display = "none";
+                    }
+                }
+                function ulfkbuk() {
+                    if (document.getElementById("ulbuk").selectedIndex == "2") {
+                        document.getElementById("lymfbuk").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("lymfbuk").style.display = "none";
+                    }
+                }
+                function yresekt() {
+                    if (document.getElementById("yttres").selectedIndex == "2") {
+                        document.getElementById("yttre").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("yttre").style.display = "none";
+                    }
+                }
+                function specres() {
+                    if (document.getElementById("anspec").checked) {
+                        document.getElementById("anyttres").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("anyttres").style.display = "none";
+                    }
+                }
+                function anreko() {
+                    if (document.getElementById("rekon").selectedIndex == "15") {
+                        document.getElementById("reko").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("reko").style.display = "none";
+                    }
+                }
+                function datumex() {
+                    if (document.getElementById("opexpo").selectedIndex == "1") {
+                        document.getElementById("behandlingsstrat").style.display = "block"
+                        document.getElementById("ex").style.display = "none";
+                    }
+                    else if (
+                        document.getElementById("opexpo").selectedIndex == "2") {
+                        document.getElementById("behandlingsstrat").style.display = "none"
+                        document.getElementById("ex").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("ex").style.display = "none"
+                        document.getElementById("behandlingsstrat").style.display = "none";
+                    }
+                }
+            </script>
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
