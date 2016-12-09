@@ -13,13 +13,23 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <ul class="nav nav-pills nav-justified navbar-default center-block" style="width:70%">
-        <li role="presentation" id="diag"><a href="Index.html">Diagnostik</a></li>
-        <li role="presentation" id="kir" class="active"><a href="Opdata.html">Opdata</a></li>
-        <li role="presentation" id="kir"><a href="Form3.html">Vårddata</a></li>
-       
+    <br/>
+    <br/>
+    <div style="width:70%" class="center-block">
+        <ul class="nav nav-tabs nav-justified navbar-default center-block">
+            <li role="presentation" id="diag"><a href="Index.html">Diagnostik</a></li>
+            <li role="presentation" id="kir" class="active"><a href="Opdata.html">Kirurgisk/Endoluminal behandling</a></li>
 
-    </ul>
+            <li role="presentation" id="vard"><a href="Form4.html">Onkologisk behandling   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
+        </ul>
+        <br />
+        <ul class="nav nav-justified navbar-default nav-tabs" style="width:35%">
+            <li role="presentation" id="diag" class="active"><a href="Opdata.html">Operativ behandling</a></li>
+            <li role="presentation" id="kir"><a href="Form3.html">Postoperativt förlopp</a></li>
+        </ul>
+        <br/>
+        <button class="btn btn-primary">Registrera operativ behandling</button>
+    </div>
     <br />
     <div class="panel panel-default center-block" style="width:70%">
         <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
@@ -294,7 +304,7 @@
                 <div class="col-xs-3">
                     <select class="dropdown active form-control" id="optyp" onchange="opan()">
                         <option value="0">--Välj--</option>
-                        <option value="1">Endoskopisk behandling</option>
+                        <option value="1">Endoluminal behandling</option>
                         <option value="2">Partiell resektion ventrikel</option>
                         <option value="3">Gastrektomi</option>
                         <option value="4">Partiell resektion esofagus</option>
@@ -423,10 +433,10 @@
         </div>
     </div>
     <div class="panel panel-default center-block" style="width:70%; display:none" id="ends">
-        <div class="panel panel-default panel-heading panel-title">Endoskopisk behandling</div>
+        <div class="panel panel-default panel-heading panel-title">Endoluminal behandling</div>
         <div class="panel panel-body">
             <div class="row form-group">
-                <label class="control-label col-sm-3">Endoskopisk mucosaresektion</label>
+                <label class="control-label col-sm-3">Endoluminal mucosaresektion</label>
                 <div class="col-xs-3">
                     <select class="dropdown active form-control">
                         <option value="0">--Välj--</option>
@@ -436,7 +446,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <label class="control-label col-sm-3">Endoskopisk submucosadissektion</label>
+                <label class="control-label col-sm-3">Endoluminal submucosadissektion</label>
                 <div class="col-xs-3">
                     <select class="dropdown active form-control">
                         <option value="0">--Välj--</option>
@@ -466,19 +476,57 @@
                 </div>
             </div>
             <div class="row form-group">
-                <label class="control-label col-sm-3">Parisklassifikation (enbart för ytliga tumörer lämpade för endoskopisk resektion)</label>
-                <div class="col-xs-3">
-                    <select class="dropdown active form-control">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Typ I "Polyploid"</option>
-                        <option value="2">Typ IIa "Flat and slightly elevated"</option>
-                        <option value="3">Typ IIb "Flat and level"</option>
-                        <option value="4">Typ IIc "Flat and depressed"</option>
-                        <option value="5">Typ III "Ulcerated"</option>
-                    </select>
+                <label class="control-label col-sm-3 h4">Parisklassifikation (enbart för ytliga tumörer lämpade för endoskopisk resektion)</label>
+               
+            </div>
+            <div class="container-fluid">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Typ I "Polyploid"</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Typ IIa "Flat and slightly elevated"</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Typ IIb "Flat and level"</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Typ IIc "Flat and depressed"</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Typ III "Ulcerated"</label>
+                    <div class="col-xs-3">
+                        <input type="checkbox" />
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3 h4">Pragklassifikation</label>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Cx</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Mx</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="panel panel-default center-block" style="width:70%; display:none" id="res">
         <div class="panel panel-default panel-heading panel-title">Resektionskirurgi</div>

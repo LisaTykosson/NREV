@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <link href="Css/bootstrap-theme.css" rel="stylesheet" />
@@ -13,14 +13,25 @@
     <meta charset="utf-8" />
 </head>
 <body>
-
-    <ul class="nav nav-pills nav-justified navbar-default center-block" style="width:70%">
-        <li role="presentation" id="diag"><a href="Index.html">Diagnostik</a></li>
-        <li role="presentation" id="kir"><a href="Opdata.html">Opdata</a></li>
-        <li role="presentation" id="vard" class="active"><a href="Form3.html">Vårddata</a></li>
-    </ul>
+    <br/>
+    <br/>
+    <div style="width:70%" class="center-block">
+        <ul class="nav nav-tabs nav-justified navbar-default center-block" >
+            <li role="presentation" id="diag"><a href="Index.html">Diagnostik</a></li>
+            <li role="presentation" id="kir" class="active"><a href="Opdata.html">Kirurgisk/Endoluminal behandling</a></li>
+          
+            <li role="presentation" id="vard"><a href="Form4.html">Onkologisk behandling   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
+        </ul>
+        <br />
+        <ul class="nav nav-justified navbar-default nav-tabs" style="width:35%">
+            <li role="presentation" id="diag"><a href="Opdata.html">Operativ behandling</a></li>
+            <li role="presentation" id="kir" class="active"><a href="Form3.html">Postoperativt förlopp</a></li>
+        </ul>
+        <br/>
+        <button class="btn btn-primary">Registrera postoperativt förlopp</button>
+    </div>
     <br />
-
+   
     <div class="panel panel-default center-block" style="width:70%">
         <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
         <div class="panel panel-body">
@@ -119,9 +130,38 @@
     </div>
 
     <div class="panel panel-default center-block" style="width:70%">
-        <div class="panel panel-default panel-heading panel-title">Komplikationer</div>
+        <div class="panel panel-default panel-heading panel-title">Komplikationer (visas enbart för endoluminalt behandlade patienter)</div>
         <div class="panel panel-body">
-            <div>Under arbete</div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Perforation</label>
+                <div class="col-xs-3">
+                    <select class="dropdown form-control active">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Blödning</label>
+                <div class="col-xs-3">
+                    <select class="dropdown form-control active">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Striktur</label>
+                <div class="col-xs-3">
+                    <select class="dropdown form-control active">
+                        <option value="0">--Välj--</option>
+                        <option value="1">Nej</option>
+                        <option value="2">Ja</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -134,7 +174,12 @@
                     <input type="text" class="form-control" />
                 </div>
             </div>
-         
+            <div class="row form-group">
+                <label class="control-label col-sm-3">Utskrivningsdatum efter operation</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
             <div class="row form-group">
                 <label class="control-label col-sm-3">Svarsdatum från patolog</label>
                 <div class="col-xs-3">
@@ -163,7 +208,7 @@
                     </select>
                 </div>
             </div>
-             <div class="row form-group">
+            <div class="row form-group">
                 <label class="control-label col-sm-3">Differentieringsgrad</label>
                 <div class="col-xs-3">
                     <select class="dropdown form-control active">
@@ -207,7 +252,7 @@
                     </select>
                 </div>
             </div>
-           
+            
 
         </div>
     </div>
@@ -386,38 +431,19 @@
             <div class="row form-group">
                 <label class="control-label col-sm-3">pT</label>
                 <div class="col-xs-3">
-                      <select class="dropdown form-control active">
-                        <option value="0">--Välj--</option>
-                        <option value="1">T0</option>
-                        <option value="2">Tis</option>
-                        <option value="3">T1</option>
-                        <option value="4">T2</option>
-                        <option value="5">T4</option> 
-                        <option value="6">TX</option> 
-                    </select>
+                    <input type="text" class="form-control"  />
                 </div>
             </div>
             <div class="row form-group">
                 <label class="control-label col-sm-3">pN</label>
                 <div class="col-xs-3">
-                     <select class="dropdown form-control active">
-                        <option value="0">--Välj--</option>
-                        <option value="1">N0</option>
-                        <option value="2">N1</option>
-                        <option value="3">N2</option>
-                        <option value="4">N3</option>
-                        <option value="5">NX</option> 
-                    </select>
+                    <input type="text" class="form-control"/>
                 </div>
             </div>
             <div class="row form-group">
                 <label class="control-label col-sm-3">pM</label>
                 <div class="col-xs-3">
-                     <select class="dropdown form-control active">
-                        <option value="0">--Välj--</option>
-                        <option value="1">M0</option>
-                        <option value="2">M1</option>
-                    </select>
+                    <input type="text" class="form-control"  />
                 </div>
             </div>
             <div class="row form-group">
@@ -426,7 +452,7 @@
                     <input type="text" class="form-control" placeholder="Beräknad variabel"/>
                 </div>
             </div>
-               <div class="row form-group">
+            <div class="row form-group">
                 <label class="control-label col-sm-3">Definitiv tumörlokal</label>
                 <div class="col-xs-3">
                     <input type="text" class="form-control" placeholder="Visas vad som angivits i Opdata" />
