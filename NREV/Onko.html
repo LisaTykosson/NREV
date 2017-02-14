@@ -353,7 +353,7 @@
     </div>
 
 
-    <div class="panel panel-default center-block" style="width:70%;display:none" id="atg" >
+    <div class="panel panel-default center-block" style="width:70%" id="atg" >
         <div class="panel panel-default panel-heading panel-title">Åtgärd</div>
         <div class="panel panel-body">
             <div class="row form-group">
@@ -969,7 +969,7 @@
                 <div class="row form-group">
                     <label class="control-label col-sm-3">Resultat</label>
                     <div class="col-xs-3">
-                        <select class="form-control" id="res" onchange="uppf()">
+                        <select class="form-control" >
                             <option value="0">--Välj--</option>
                             <option value="1">Komplett remission</option>
                             <option value="2">Icke-komplett remission</option>
@@ -977,16 +977,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row form-group" id="kirsalvage" style="display:none">
-                    <label class="control-label col-sm-3">Kirurgi (salvage)</label>
-                    <div class="col-xs-3">
-                        <select class="form-control">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>
@@ -1282,7 +1273,7 @@
         <div class="panel panel-default panel-heading panel-title">Uppföljning</div>
         <div class="panel panel-body">
           
-            <div id="upp" style="display:none">
+            <div id="upp" >
                 <div class="row form-group">
                     <label class="control-label col-sm-3">Recidiv</label>
                     <div class="col-xs-3">
@@ -1293,7 +1284,7 @@
                         </select>
                     </div>
                 </div>
-                <div id="recidiv" style="display:none">
+                <div id="recidiv" style="display:none" class="container-fluid">
                     <div class="row form-group">
                         <label class="control-label col-sm-3">Datum</label>
                         <div class="col-xs-3">
@@ -1322,6 +1313,16 @@
                     </div>
                     <div class="row form-group">
                         <label class="control-label col-sm-3">Fjärrmetastas</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group" id="kirsalvage">
+                        <label class="control-label col-sm-3">Kirurgi (salvage)</label>
                         <div class="col-xs-3">
                             <select class="form-control">
                                 <option value="0">--Välj--</option>
