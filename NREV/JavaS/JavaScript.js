@@ -547,3 +547,11 @@ function uppf() {
         document.getElementById("kirsalvage").style.display = "none";
     }
 }
+function onkrecidiv() {
+    if (document.getElementById("onkrec").selectedIndex == "2") {
+        document.getElementById("recidiv").style.display = "block";
+    }
+    else {
+        document.getElementById("recidiv").style.display = "none";
+    }
+}
