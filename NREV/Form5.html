@@ -1,0 +1,578 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Css/bootstrap.css" rel="stylesheet" />
+    <link href="Css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="JavaS/bootstrap.js"></script>
+    <script src="JavaS/npm.js"></script>
+    <script src="JavaScript.js"></script>
+</head>
+<body>
+    <br />
+    <br />
+    <div style="width:70%" class="center-block">
+        <ul class="nav nav-tabs nav-justified navbar-default">
+            <li role="presentation" id="diag" ><a href="Form6.html">Strålbehandling</a></li>
+            <li role="presentation" id="kir" class="active"><a href="Form5.html">Läkemedel</a></li>
+
+        </ul>
+        <br />
+
+    </div>
+    <br />
+    <div class="panel panel-default center-block" style="width:70%">
+        <div class="panel panel-default panel-heading panel-title">Läkemedel</div>
+        <div class="panel panel-body">
+            <button class="btn btn-primary" id="adding" onclick="add()"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>      Lägg till behandlingslinje     </button>
+            <br />
+            <br />
+            <div id="addera" style="display:none">
+                <button class="btn btn-danger" id="hider" onclick="hide()"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>      Radera behandlingslinje     </button>
+                <br />
+                <br />
+             
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Behandlingsintention</label>
+                    <div class="col-xs-3">
+                        <select class="form-control">
+                            <option value="0">--Välj--</option>
+                            <option value="1">Adjuvant</option>
+                            <option value="2">Neoadjuvant</option>
+                            <option value="3">Palliativ</option>
+                            <option value="4">Underhållsbehandling</option>
+                        </select>
+                    </div>
+                </div>
+
+             
+                <br />
+                <br />
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Substans</label>
+                    <div class="col-xs-3">
+                        <select class="form-control">
+                            <option value="0">--Välj--</option>
+                            <option value="1">Capecitabin (xeloda)</option>
+                            <option value="2">Cisplatin</option>
+                            <option value="3">Docetaxel</option>
+                            <option value="4">Doxorubicin</option>
+                            <option value="5">Epirubicin</option>
+                            <option value="6">Fluorouracil</option>
+                            <option value="7">Gemcitabin</option>
+                            <option value="8">Irinotekan (Campto)</option>
+                            <option value="8">Karboplatin</option>
+                            <option value="10">Oxaliplatin</option>
+                            <option value="11">Paklitaxel</option>
+                            <option value="1">Trastuzumab (Hercfeptin)</option>
+                            <option value="13">S-1 tegafur, gimeracil, oteracil (Teysuno)</option>
+                            <option value="14">Ramuciraumab (Cyramza)</option>
+                            <option value="15">Annan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Kategori</label>
+                    <div class="col-xs-3">
+                        <select class="form-control">
+                            <option>--Välj--</option>
+                            <option value="0">Cytostatika</option>
+                            <option value="2">Immunoterapi</option>
+                            <option value="3">Benstärkande terapi</option>
+                            <option value="4">Isotopterapi</option>
+                            <option value="5">Endokrin terapi</option>
+                            <option value="6">Annat cancerläkemedel</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Datum</label>
+                    <div class="col-xs-3">
+                       <input type="date" class="form-control"/>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="nysub()" id="nyasubs"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>      Lägg till substans    </button>
+               <div id="break">
+                   <br />
+               </div>
+            
+                <div id="substans" style="display:none">
+                    <br />
+                    <br />
+                    <hr />
+                    <div class="row form-group">
+
+                        <label class="control-label col-sm-3">Substans</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Capecitabin (xeloda)</option>
+                                <option value="2">Cisplatin</option>
+                                <option value="3">Docetaxel</option>
+                                <option value="4">Doxorubicin</option>
+                                <option value="5">Epirubicin</option>
+                                <option value="6">Fluorouracil</option>
+                                <option value="7">Gemcitabin</option>
+                                <option value="8">Irinotekan (Campto)</option>
+                                <option value="8">Karboplatin</option>
+                                <option value="10">Oxaliplatin</option>
+                                <option value="11">Paklitaxel</option>
+                                <option value="1">Trastuzumab (Hercfeptin)</option>
+                                <option value="13">S-1 tegafur, gimeracil, oteracil (Teysuno)</option>
+                                <option value="14">Ramuciraumab (Cyramza)</option>
+                                <option value="15">Annan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Kategori</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option>--Välj--</option>
+                                <option value="0">Endokrin behandling</option>
+                                <option value="2">Cytostatika</option>
+                                <option value="3">Anti-HER2 behandling</option>
+                                <option value="4">Signalhämmande behandling</option>
+                                <option value="5">Skelettstärkande behandling</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Datum</label>
+                        <div class="col-xs-3">
+                            <input type="date" class="form-control" />
+                        </div>
+                    </div>
+                    <button class="btn btn-danger pull-right" onclick="bortsub()" id="subs"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>      Radera substans    </button>
+                    <button class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>      Lägg till substans    </button>
+                    <br />
+                    <br />
+                </div>
+               
+                
+                <div id="tabell" style="display:none">
+                    <table class="table table-striped" id="HandelseTable">
+                        <thead>
+                            <tr>
+                                <th>Substans</th>
+                                <th>Datum</th>
+                                <th>Händelse</th>
+                                <th>Orsak</th>
+                                <th id="orsak1" style="display:none">Ange biverkan</th>
+                                <th>Radera händelse</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control col-xs-3" placeholder="Här visas endast valda substanser" /> </td>
+                                <td>
+                                    <input type="date" class="form-control col-xs-3" placeholder="Datum för händelsen" />
+
+                                </td>
+                                <td>
+                                    <select class="form-control col-xs-3">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">Dosjustering</option>
+                                        <option value="2">Utsättning</option>
+                                    </select>
+                                    <select class="form-control col-xs-3" style="display:none">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">Nyinsättning</option>
+                                        <option value="2">Återinsättning</option>
+                                        <option value="3">Utsättning</option>
+                                        <option value="4">Biverkning</option>
+                                        <option value="5">Patientens önskemål</option>
+                                        <option value="6">Strålbehandling</option>
+                                        <option value="7">Annan orsak</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control" id="hand" onchange="visning()">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">Biverkan</option>
+                                        <option value="2">Planerat stopp</option>
+                                        <option value="3">Patientens önskemål</option>
+
+                                    </select>
+                                </td>
+                                <td id="biv" style="display:none">
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">Allergi/Immunologi</option>
+                                        <option value="2">Dermatoslogi</option>
+                                        <option value="3">Renal </option>
+                                        <option value="4">CNS</option>
+                                        <option value="5">Blod/Benmärg</option>
+                                        <option value="6">Gastrointestinal </option>
+                                        <option value="7">Cardiovaskulär</option>
+                                        <option value="8">Pulmonary</option>
+                                        <option value="9">Hepatic</option>
+                                        <option value="10">Musculosketal </option>
+                                        <option value="11">Annan</option>
+                                    </select>
+                                </td>
+
+                                <td><button class="btn btn-danger" onclick="deleteRow(this)"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> </button> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <br />
+                    <button class="btn btn-success" onclick="insRow()"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>      Lägg till händelse  </button>
+
+                    <br />
+                    <br />
+
+                    <button class="btn btn-success" onclick="blabla()" id="tab"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="display:none"></span>      Lägg till händelse  </button>
+                    <hr />
+                    <br />
+                    <br />
+                </div>
+                    <div id="tabell2" style="display:none">
+                        <table class="table table-striped" id="HandelseTable2">
+                            <thead>
+                                <tr>
+                                    <th>Substans</th>
+                                    <th>Datum</th>
+                                    <th>Händelse</th>
+                                    <th>Orsak</th>
+                                    <th id="orsak2" style="display:none">Ange biverkan</th>
+                                    <th>Radera händelse</th>
+
+                                </tr>
+                                </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" class="form-control col-xs-3" placeholder="Här visas endast valda substanser" /> </td>
+                                    <td>
+                                        <input type="date" class="form-control col-xs-3" placeholder="Datum för händelsen" />
+
+                                    </td>
+                                    <td>
+                                        <select class="form-control col-xs-3">
+                                            <option value="0">--Välj--</option>
+                                            <option value="1">Dosjustering</option>
+                                            <option value="2">Utsättning</option>
+                                        </select>
+                                        <select class="form-control col-xs-3" style="display:none">
+                                            <option value="0">--Välj--</option>
+                                            <option value="1">Nyinsättning</option>
+                                            <option value="2">Återinsättning</option>
+                                            <option value="3">Utsättning</option>
+                                            <option value="4">Biverkning</option>
+                                            <option value="5">Patientens önskemål</option>
+                                            <option value="6">Strålbehandling</option>
+                                            <option value="7">Annan orsak</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" id="hand2" onchange="visning2()">
+                                            <option value="0">--Välj--</option>
+                                            <option value="1">Biverkan</option>
+                                            <option value="2">Planerat stopp</option>
+                                            <option value="3">Patientens önskemål</option>
+
+                                        </select>
+                                    </td>
+                                    <td id="biv2" style="display:none">
+                                        <select class="form-control">
+                                            <option value="0">--Välj--</option>
+                                            <option value="1">Allergi/Immunologi</option>
+                                            <option value="2">Dermatoslogi</option>
+                                            <option value="3">Renal </option>
+                                            <option value="4">CNS</option>
+                                            <option value="5">Blod/Benmärg</option>
+                                            <option value="6">Gastrointestinal </option>
+                                            <option value="7">Cardiovaskulär</option>
+                                            <option value="8">Pulmonary</option>
+                                            <option value="9">Hepatic</option>
+                                            <option value="10">Musculosketal </option>
+                                            <option value="11">Annan</option>
+                                        </select>
+                                    </td>
+                                    <td><button class="btn btn-danger" onclick="deleteRows(this)"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> </button> </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success" onclick="insRows()"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>      Lägg till händelse  </button>
+                        <br />
+                        <br />
+                    </div>
+                    <button class="btn btn-success" onclick="blabla2()" id="tab2"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>      Lägg till händelse  </button>
+                    <hr />
+                    <br />
+                    <br />
+                   
+                    
+           
+                <button class="btn btn-primary" id="av" onclick="avsluta()"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>      Avsluta behandlingslinje     </button>
+                <br />
+                <br />
+                <div id="avslut" style="display:none">
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Stoppdatum</label>
+                        <div class="col-xs-3">
+                            <input type="date" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Orsak till avslutad behandling</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="avsb" onchange="avslutbiverkan()">
+                                <option>--Välj--</option>
+                                <option value="0">Progress</option>
+                                <option value="2">Biverkningar</option>
+                                <option value="3">Planerat stopp</option>
+                                <option value="4">Behandlingspaus</option>
+                                <option value="5">Uppnådd maxdos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group" id="bivav" style="display:none">
+                        <label class="control-label col-sm-3">Ange biverkan</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Allergi/Immunologi</option>
+                                <option value="2">Dermatoslogi</option>
+                                <option value="3">Renal </option>
+                                <option value="4">CNS</option>
+                                <option value="5">Blod/Benmärg</option>
+                                <option value="6">Gastrointestinal </option>
+                                <option value="7">Cardiovaskulär</option>
+                                <option value="8">Pulmonary</option>
+                                <option value="9">Hepatic</option>
+                                <option value="10">Musculosketal </option>
+                                <option value="11">Annan</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
+<script type="text/javascript">
+    function visning() {
+        if (document.getElementById("hand").selectedIndex == "1"){
+            document.getElementById("biv").style.display = "block"
+            document.getElementById("orsak1").style.display = "block";
+        }
+       
+        else {
+            document.getElementById("biv").style.display = "none"
+            document.getElementById("uts").style.display = "none"
+            document.getElementById("orsak1").style.display = "none";
+        }
+    }
+    function visning2() {
+        if (document.getElementById("hand2").selectedIndex == "1") {
+            document.getElementById("biv2").style.display = "block"
+            document.getElementById("orsak2").style.display = "block";
+        }
+
+        else {
+            document.getElementById("biv2").style.display = "none"
+            document.getElementById("uts2").style.display = "none"
+            document.getElementById("orsak2").style.display = "none";
+        }
+    }
+    function avslutbiverkan() {
+        if (document.getElementById("avsb").selectedIndex == "2") {
+            document.getElementById("bivav").style.display = "block";
+        }
+        else {
+            document.getElementById("bivav").style.display = "none";
+        }
+    }
+    function add() {
+        if (document.getElementById("adding").onclick)
+            document.getElementById("addera").style.display = "block";
+
+
+        else {
+            document.getElementById("addera").style.display = "none";
+        }
+    }
+    function hide() {
+        if (document.getElementById("hider").onclick)
+            document.getElementById("addera").style.display = "none";
+
+
+        else {
+            document.getElementById("addera").style.display = "block";
+        }
+    }
+    function avsluta() {
+        if (document.getElementById("av").onclick)
+            document.getElementById("avslut").style.display = "block";
+
+
+        else {
+            document.getElementById("avslut").style.display = "none";
+        }
+    }
+    function blabla() {
+        if (document.getElementById("tab").onclick) {
+            document.getElementById("tabell").style.display = "block"
+            document.getElementById("tab").style.display = "none";
+        }
+
+        else {
+            document.getElementById("tabell").style.display = "none";
+        }
+    }
+    function blabla2() {
+        if (document.getElementById("tab2").onclick) {
+            document.getElementById("tabell2").style.display = "block"
+            document.getElementById("tab2").style.display = "none";
+        }
+
+        else {
+            document.getElementById("tabell2").style.display = "none";
+        }
+    }
+  
+    function nysub() {
+        if (document.getElementById("nyasubs").onclick) {
+            document.getElementById("substans").style.display = "block";
+            document.getElementById("nyasubs").style.display = "none"
+        }
+
+        else {
+            document.getElementById("substans").style.display = "none";
+        }
+    }
+    function bortsub() {
+        if (document.getElementById("subs").onclick) {
+            document.getElementById("substans").style.display = "none";
+            document.getElementById("nyasubs").style.display = "block";
+        }
+
+        else {
+            document.getElementById("substans").style.display = "none";
+
+        }
+    }
+    function deleteRow(row) {
+        var i = row.parentNode.parentNode.rowIndex;
+        document.getElementById('HandelseTable').deleteRow(i);
+    }
+    function deleteRows(row) {
+        var i = row.parentNode.parentNode.rowIndex;
+        document.getElementById('HandelseTable2').deleteRow(i);
+    }
+
+
+        function insRow() {
+            const table = document
+             .querySelector('#HandelseTable');
+
+            const body = table
+                .querySelector('tbody')
+
+            const html = `
+              <tr>
+                  <td><input type="text" class ="form-control col-xs-3" placeholder="Här visas endast valda substanser" /> </td>
+                          <td>
+                              <input type="date" class ="form-control col-xs-3" />
+
+                          </td>
+                 <td>
+                      <select class ="form-control col-xs-3" >
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Dosjustering</option>
+                                    <option value="2">Utsättning</option>
+                                </select>
+                  </td>
+                        <td>
+                                <select class ="form-control" id="hand" onchange="visning()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Biverkan</option>
+                                    <option value="2">Planerat stopp</option>
+                                    <option value="3">Patientens önskemål</option>
+
+                                </select>
+                            </td>
+                <td><button class ="btn btn-danger" onclick="deleteRow(this)"><span class ="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> </button> </td>
+              </tr>
+
+                       `;
+            body.innerHTML += html;
+        }
+        function insRows() {
+            const table = document
+              .querySelector('#HandelseTable2');
+
+            const body = table
+                .querySelector('tbody')
+
+            const html = `
+              <tr>
+                  <td><input type="text" class ="form-control col-xs-3" placeholder="Här visas endast valda substanser" /> </td>
+                          <td>
+                              <input type="date" class ="form-control col-xs-3" />
+
+                          </td>
+                 <td>
+                      <select class ="form-control col-xs-3" >
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Dosjustering</option>
+                                    <option value="2">Utsättning</option>
+                                </select>
+                  </td>
+                        <td>
+                                <select class ="form-control" id="hand" onchange="visning()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Biverkan</option>
+                                    <option value="2">Planerat stopp</option>
+                                    <option value="3">Patientens önskemål</option>
+
+                                </select>
+                            </td>
+                <td><button class ="btn btn-danger" onclick="deleteRow(this)"><span class ="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> </button> </td>
+              </tr>
+
+                       `;
+            body.innerHTML += html;
+        }
+        function insertRows() {
+            const table = document
+             .querySelector('#StralTable');
+
+            const body = table
+                .querySelector('tbody')
+
+            const html = `
+                  <tr>
+                                <td><input type="text" class ="form-control col-xs-3" />   </td>
+                                <td>
+                                    <input type="text" class ="form-control col-xs-3" />
+                                </td>
+                                <td>
+                                    <select class ="form-control col-xs-3">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">Primärtumör</option>
+                                        <option value="2">Fjärrmetastas</option>
+                                        <option value="3">Lymfkörtelmetastas</option>
+                                    </select>
+                                </td>
+                                <td><button class ="btn btn-danger" onclick="deletestrRows(this)"><span class ="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> </button> </td>
+                            </tr>
+
+
+                       `;
+            body.innerHTML += html;
+        }
+
+</script>

@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="JavaS/bootstrap.js"></script>
     <script src="JavaS/npm.js"></script>
-    <script src="JavaScript.js"></script>
+    <script src="JavaS/JavaScript.js"></script>
     <title></title>
 	<meta charset="utf-8" />
 </head>
@@ -21,7 +21,7 @@
             <li role="presentation" id="diag" class="active"><a href="Index.html">Diagnostik</a></li>
             <li role="presentation" id="kir"><a href="Opdata.html">Kirurgisk/Endoluminal behandling</a></li>
 
-            <li role="presentation" id="vard"><a href="Form4.html">Onkologisk behandling   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
+            <li role="presentation" id="vard"><a href="Onko.html">Onkologisk behandling </a></li>
         </ul>
         <br />
         <div class="panel panel-default center-block" style="width:70%">
@@ -697,170 +697,6 @@
             </div>
         </div>
    
-            <script type="text/javascript">
-                $('a[data-toggle="tooltip"]').tooltip({
-                    
-                    placement: 'top',
-                    html: true
-                });
-
-                function biopsi() {
-                    if
-                        (document.getElementById("biop").selectedIndex == "1") {
-                        document.getElementById("nej").style.display = "block"
-                        document.getElementById("ja").style.display = "none";
-                    }
-                    else if (
-                        document.getElementById("biop").selectedIndex == "2") {
-                        document.getElementById("ja").style.display = "block"
-                        document.getElementById("nej").style.display = "none";
-                    }
-                    else {
-                        document.getElementById("nej").style.display = "none"
-                        document.getElementById("ja").style.display = "none";
-                    }
-
-                }
-
-                function table() {
-                    if
-                    (document.getElementById("icd").selectedIndex == "1" || document.getElementById("icd").selectedIndex == "2" || document.getElementById("icd").selectedIndex == "3" || document.getElementById("icd").selectedIndex == "4" || document.getElementById("icd").selectedIndex == "5" || document.getElementById("icd").selectedIndex == "6" || document.getElementById("icd").selectedIndex == "7" || document.getElementById("icd").selectedIndex == "8" || document.getElementById("icd").selectedIndex == "9") {
-                        document.getElementById("esof").style.display = "block";
-                        document.getElementById("ventr").style.display = "none";
-                    }
-                    else if (document.getElementById("icd").selectedIndex == "10" || document.getElementById("icd").selectedIndex == "11" || document.getElementById("icd").selectedIndex == "12" || document.getElementById("icd").selectedIndex == "13" || document.getElementById("icd").selectedIndex == "14" || document.getElementById("icd").selectedIndex == "15" || document.getElementById("icd").selectedIndex == "16" || document.getElementById("icd").selectedIndex == "17" || document.getElementById("icd").selectedIndex == "18" || document.getElementById("icd").selectedIndex == "19") {
-                        document.getElementById("ventr").style.display = "block";
-                        document.getElementById("esof").style.display = "none";
-                    }
-                    else {
-                        document.getElementById("ventr").style.display = "none";
-                        document.getElementById("esof").style.display = "none";
-                    }
-                }
-
-                function tumbeh() {
-                    if (document.getElementById("tummal").selectedIndex == "1") {
-                        document.getElementById("kurativ").style.display = "block";
-                        document.getElementById("palliativ").style.display = "none";
-                        document.getElementById("ingen").style.display = "none";
-                    }
-                    else if (document.getElementById("tummal").selectedIndex == "2") {
-                        document.getElementById("palliativ").style.display = "block";
-                        document.getElementById("kurativ").style.display = "none";
-                        document.getElementById("ingen").style.display = "none";
-
-                    }
-                    else if (document.getElementById("tummal").selectedIndex == "3") {
-                        document.getElementById("ingen").style.display = "block";
-                        document.getElementById("kurativ").style.display = "none";
-                        document.getElementById("palliativ").style.display = "none";
-                    }
-                    else {
-                        document.getElementById("ingen").style.display = "none";
-                        document.getElementById("kurativ").style.display = "none";
-                        document.getElementById("palliativ").style.display = "none";
-                    }
-                }
-
-                function specificera() {
-                    if (document.getElementById("mannat").checked)
-                        document.getElementById("spec").style.display = "block";
-
-
-                    else {
-                        document.getElementById("spec").style.display = "none";
-                    }
-                }
-                function specificera2() {
-                    if (document.getElementById("mannat2").checked)
-                        document.getElementById("spec2").style.display = "block";
-
-
-                    else {
-                        document.getElementById("spec2").style.display = "none";
-                    }
-                }
-
-                function met() {
-                    if (document.getElementById("m").selectedIndex == "2")
-                        document.getElementById("metastaser").style.display = "block";
-                    else {
-                        document.getElementById("metastaser").style.display = "none";
-                    }
-                }
-                function met1() {
-                    if (document.getElementById("m1").selectedIndex == "2")
-                        document.getElementById("metastaser1").style.display = "block";
-                    else {
-                        document.getElementById("metastaser1").style.display = "none";
-                    }
-                }
-                function pallonk2() {
-                    if (document.getElementById("pall2").selectedIndex == "2" )
-                        document.getElementById("pallonko2").style.display = "block";
-                    else {
-                        document.getElementById("pallonko2").style.display = "none";
-                    }
-                }
-                function kuronkos() {
-                    if (document.getElementById("kuronk").selectedIndex == "2" )
-                        document.getElementById("kuronko").style.display = "block";
-                    else {
-                        document.getElementById("kuronko").style.display = "none";
-                    }
-                }
-
-                function remmat() {
-                    if (document.getElementById("rem").selectedIndex == "2")
-                        document.getElementById("sjhklin").style.display = "block";
-                    else {
-                        document.getElementById("sjhklin").style.display = "none";
-                    }
-                }
-                function lever() {
-                    if (document.getElementById("lever").selectedIndex == "2" || document.getElementById("lever").selectedIndex == "1" || document.getElementById("lever").selectedIndex == "3") {
-                        document.getElementById("leverm").style.display = "block";
-
-                        if (document.getElementById("lever").selectedIndex == "3")
-                            document.getElementById("anmet").style.display = "block";
-                    }
-                    else {
-                        document.getElementById("leverm").style.display = "none",
-                        document.getElementById("anmet").style.display = "none";
-                    }
-                }
-
-
-                function behkompl() {
-                    if (document.getElementById("kompl").selectedIndex == "2")
-                        document.getElementById("behkomplikation").style.display = "block";
-                    else {
-                        document.getElementById("behkomplikation").style.display = "none";
-                    }
-                }
-                function apres() {
-                    if (document.getElementById("aprextrsfink").selectedIndex == "2" || document.getElementById("aprextrsfink").selectedIndex == "1") {
-                        document.getElementById("aprextra").style.display = "block",
-                        document.getElementById("datos").style.display = "block";
-
-                    } else if (document.getElementById("aprextrsfink").selectedIndex == "3" || document.getElementById("aprextrsfink").selectedIndex == "4" || document.getElementById("aprextrsfink").selectedIndex == "5") {
-                        document.getElementById("aprextra").style.display = "none",
-                        document.getElementById("datos").style.display = "block";
-                    }
-
-                    else {
-                        document.getElementById("aprextra").style.display = "none",
-                        document.getElementById("datos").style.display = "none";
-                    }
-                }
-                function annankirurgi() {
-                    if (document.getElementById("annankirurgi").selectedIndex == "2")
-                        document.getElementById("annankirurgidat").style.display = "block";
-                    else {
-                        document.getElementById("annankirurgidat").style.display = "none";
-                    }
-                }
-            </script>
     
 
 </body>
