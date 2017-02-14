@@ -1286,14 +1286,14 @@
                 <div class="row form-group">
                     <label class="control-label col-sm-3">Recidiv</label>
                     <div class="col-xs-3">
-                        <select class="form-control">
+                        <select class="form-control" id="onkrec" onchange="onkrecidiv()">
                             <option value="0">--Välj--</option>
                             <option value="1">Nej</option>
                             <option value="2">Ja</option>
                         </select>
                     </div>
                 </div>
-                <div id="recidiv">
+                <div id="recidiv" style="display:none">
                     <div class="row form-group">
                         <label class="control-label col-sm-3">Datum</label>
                         <div class="col-xs-3">
