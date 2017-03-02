@@ -16,20 +16,342 @@
     <br/>
     <br/>
     <div style="width:70%" class="center-block">
-        <ul class="nav nav-tabs nav-justified navbar-default" >
+        <ul class="nav nav-tabs nav-justified navbar-default">
             <li role="presentation" id="diag"><a href="Index.html">Diagnostik</a></li>
             <li role="presentation" id="kir"><a href="Opdata.html">Kirurgisk/Endoluminal behandling</a></li>
 
             <li role="presentation" id="vard" class="active"><a href="Onko.html">Onkologisk behandling</a></li>
         </ul>
         <br />
-        <ul class="nav nav-justified navbar-default nav-tabs" style="width:35%">
-            <li role="presentation" class="active"><a href="Onko.html">Onkologisk behandling</a></li>
+        <button class="btn btn-group-vertical btn-success" id="btnadju" onclick="showadju()">Registrera Adjuvant/Neoadjuvant </button>
+        <button class="btn btn-group-vertical btn-success" id="btndef" onclick="showdef()">Registrera Definitiv Kemoradioterapi </button>
+        <button class="btn btn-group-vertical btn-success" id="btnpall" onclick="showpall()">Registrera Palliativ behandling </button>
+        <button class="btn btn-group-vertical btn-success" id="btnupp" onclick="showupp()">Registrera Onkologisk uppföljning </button>
+        </div>
+    <br />
+    <div id="adjuvant" style="display:none">
+        <div style="width:70%" class="center-block">
+            <ul class="nav nav-justified navbar-default nav-tabs" style="width:30%" >
+                <li role="presentation" class="active"><a href="Onko.html">Neoadjuvant/Adjuvant behandling</a></li>
 
-        </ul>
+            </ul>
+
+            <br />
+            <button class="btn btn-group-vertical btn-danger" id="btnoadju" onclick="hideadju()">Registrera inte Adjuvant/Neoadjuvant </button>
+            
+           </div>
+        <br />
+            <div class="panel panel-default center-block" style="width:70%">
+                <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
+                <div class="panel panel-body">
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Initierat av</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Inrapportör</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Inrapporterande enhet</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Läkare</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Inrapporteringsdatum</label>
+                        <div class="col-xs-3">
+                            <input type="text" class="form-control" placeholder="2016-08-24" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default center-block" style="width:70%">
+                <div class="panel panel-default panel-heading panel-title">Neoadjuvant behandling</div>
+                <div class="panel panel-body">
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Neoadjuvant behandling given</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="neo" onchange="neoadj()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="neoadjbeh" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Kemoradioterapi</label>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="kemoradneoadj" onchange="krneoadj()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="neoadjkemorad" style="display:none" class="container-fluid">
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Startdatum kemoterapi</label>
+                                <div class="col-xs-3">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Regim</label>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">många</option>
+                                        <option value="2">regimer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Ytterligare substans</label>
+                            <div class="col-xs-3">
+                                <input type="checkbox" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Startdatum radioterapi</label>
+                            <div class="col-xs-3">
+                                <input type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Primärtumör</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Totaldos</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Antal fraktioner</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    
+                    <br />
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Kemoterapi</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="kemoneoadj" onchange="kneoadj()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="neoadjkemo" class="container-fluid" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Startdatum kemoterapi</label>
+                            <div class="col-xs-3">
+                                <input type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Regim</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">många</option>
+                                    <option value="2">regimer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Radioterapi</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="radioneoadj" onchange="rneoadj()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="neoadjradio" class="container-fluid" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Startdatum radioterapi</label>
+                            <div class="col-xs-3">
+                                <input type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Totaldos</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Antal fraktioner</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            <div class="panel panel-default center-block" style="width:70%">
+                <div class="panel panel-default panel-heading panel-title">Adjuvant behandling</div>
+                <div class="panel panel-body">
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Adjuvant behandling given</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="adj" onchange="adjuv()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="adjbeh" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Kemoradioterapi</label>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="kemoradadj" onchange="kradj()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="adjkemorad" style="display:none" class="container-fluid">
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Startdatum kemoterapi</label>
+                                <div class="col-xs-3">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Regim</label>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">många</option>
+                                        <option value="2">regimer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Startdatum radioterapi</label>
+                                <div class="col-xs-3">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Totaldos</label>
+                                <div class="col-xs-3">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Antal fraktioner</label>
+                                <div class="col-xs-3">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Kemoteraoi</label>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="kemoadj" onchange="kadj()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="adjkemo" class="container-fluid" style="display:none">
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Startdatum kemoterapi</label>
+                                <div class="col-xs-3">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Regim</label>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">många</option>
+                                        <option value="2">regimer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Radioterapi</label>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="radioadj" onchange="radj()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="adjradio" class="container-fluid" style="display:none">
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Startdatum radioterapi</label>
+                                <div class="col-xs-3">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Totaldos</label>
+                                <div class="col-xs-3">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Antal fraktioner</label>
+                                <div class="col-xs-3">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div style="display:none" id="pall">
+        <div style="width:70%" class="center-block">
+            <ul class="nav nav-justified navbar-default nav-tabs" style="width:30%">
+                <li role="presentation" class="active"><a href="Onko.html">Palliativ behandling</a></li>
+
+            </ul>
+
+            <br />
+            <button class="btn btn-group-vertical btn-danger" id="btnnopall" onclick="hidepall()">Registrera inte Palliativ behandling </button>
         </div>
         <br />
-       
         <div class="panel panel-default center-block" style="width:70%">
             <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
             <div class="panel panel-body">
@@ -65,534 +387,114 @@
                 </div>
             </div>
         </div>
-    <div class="panel panel-default center-block" style="width:70%">
-        <div class="panel panel-default panel-heading panel-title">Neodadjuvant behandling</div>
-        <div class="panel panel-body">
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Neoadjuvant behandling given</label>
-                <div class="col-xs-3">
-                    <select class="form-control" id="neo" onchange="neoadj()">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Nej</option>
-                        <option value="2">Ja</option>
-                    </select>
-                </div>
-            </div>
-            <div id="neoadjbeh" style="display:none">
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Kemoradioterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="kemoradneoadj" onchange="krneoadj()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="neoadjkemorad" style="display:none" class="container-fluid">
+        <div class="panel panel-default center-block" style="width:70%" >
+            <div class="panel panel-default panel-heading panel-title">Palliativ behandling</div>
+            <div class="panel panel-body">
+              
                     <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum kemoterapi</label>
+                        <label class="control-label col-sm-3">Situation</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Recidiv</option>
+                                <option value="2">Primärt generealiserad eller icke-resektabel sjukdom</option>
+                                <option value="3">Lokaliserad sjukdom men pat ej aktuell för kurativ behandling</option>
+                                <option value="4">Ej genomgått kuraitv resektionskirurgi efter tidigare neoadjuvant behandling</option>
+                                <option value="5">Icke-komplett remission eller progress efter definitv kemoradioterapi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Datum för första behandling (oavsett modalitet)</label>
                         <div class="col-xs-3">
                             <input type="date" class="form-control" />
                         </div>
                     </div>
-                    <div class="text-capitalize h4">Preparat</div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Cisplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Docetaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Doxorubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Epirubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Fluorouracil</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Gemcitabin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Karboplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Oxaliplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Paklitaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Annan</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
+                    <div class="text-capitalize h4">Modaliteter</div>
+                    <hr />
                     <br />
                     <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum radioterapi</label>
+                        <label class="control-label col-sm-3">Brachyterapi</label>
                         <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Kemoterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="kemoneoadj" onchange="kneoadj()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="neoadjkemo" class="container-fluid" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum kemoterapi</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="text-capitalize h4">Preparat</div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Cisplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Docetaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Doxorubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Epirubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Fluorouracil</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Gemcitabin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Karboplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Oxaliplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Paklitaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Annan</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Radioterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="radioneoadj" onchange="rneoadj()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="neoadjradio" class="container-fluid" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum radioterapi</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="panel panel-default center-block" style="width:70%" id="atg" >
-        <div class="panel panel-default panel-heading panel-title">Åtgärd</div>
-        <div class="panel panel-body">
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Åtgärd</label>
-                <div class="col-xs-3">
-                    <select class="form-control" id="atgard" onchange="atgarder()">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Ej exploration</option>
-                        <option value="2">Exploration men ej resektion</option>
-                        <option value="3">Palliativ resektion (R2)</option>
-                        <option value="4">Kurativ/gränsfall operation (R0-1)</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row form-group" id="ejex" style="display:none">
-                <label class="control-label col-sm-3">Orsak</label>
-                <div class="col-xs-3">
-                    <select class="form-control" multiple>
-                        <option value="0">--Välj--</option>
-                        <option value="1">Ej i skick</option>
-                        <option value="2">Progress</option>
-                        <option value="3">Annan orsak</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row form-group" id="ex" style="display:none">
-                <label class="control-label col-sm-3">Orsak</label>
-                <div class="col-xs-3">
-                    <select class="form-control" multiple>
-                        <option value="0">--Välj--</option>
-                        <option value="1">Peritoneal carcinos</option>
-                        <option value="2">Annan fjärrmetastas</option>
-                        <option value="3">Icke-resektabel</option>
-                        <option value="4">Annan orsak</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default center-block" style="width:70%;display:none" id="pall">
-        <div class="panel panel-default panel-heading panel-title">Palliativ behandling</div>
-        <div class="panel panel-body">
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Palliativ behandling</label>
-                <div class="col-xs-3">
-                    <select class="form-control" id="pallbeh" onchange="palliativ()">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Nej</option>
-                        <option value="2">Ja</option>
-                    </select>
-                </div>
-            </div>
-            <div id="behpall" style="display:none">
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Situation</label>
-                    <div class="col-xs-3">
-                         <select class="form-control">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Recidiv</option>
-                            <option value="2">Primärt generealiserad eller icke-resektabel sjukdom</option>
-                            <option value="3">Lokaliserad sjukdom men pat ej aktuell för kurativ behandling</option>
-                            <option value="4">Ej genomgått kuraitv resektionskirurgi efter tidigare neoadjuvant behandling</option>
-                            <option value="5">Icke-komplett remission eller progress efter definitv kemoradioterapi</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Datum för första behandling (oavsett modalitet)</label>
-                    <div class="col-xs-3">
-                        <input type="date" class="form-control" />
-                    </div>
-                </div>
-                <div class="text-capitalize h4">Modaliteter</div>
-                <hr />
-                <br />
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Brachyterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="brachyter" onchange="brter()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="brachy" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Extern radioterapi mot primärtumör eller lokalrecidiv</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="extern" onchange="externrad()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="ext" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Kemo-/systemterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="kemosys" onchange="pallkem()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div style="display:none" class="container-fluid" id="pallkembeh">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">1:a linjens palliativa behandling</label>
-                        <div class="col-xs-3">
-                            <select class="form-control" id="forsta" onchange="forstlin()">
+                            <select class="form-control" id="brachyter" onchange="brter()">
                                 <option value="0">--Välj--</option>
                                 <option value="1">Nej</option>
                                 <option value="2">Ja</option>
                             </select>
                         </div>
                     </div>
-                    <div id="forstalinjen" style="display:none">
-                        <div class="text-capitalize h4">Preparat</div>
+                    <div id="brachy" style="display:none">
                         <div class="row form-group">
-                            <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
+                            <label class="control-label col-sm-3">Totaldos</label>
                             <div class="col-xs-3">
-                                <input type="checkbox" />
+                                <input type="text" class="form-control" />
                             </div>
                         </div>
                         <div class="row form-group">
-                            <label class="control-label col-sm-3">Cisplatin</label>
+                            <label class="control-label col-sm-3">Antal fraktioner</label>
                             <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Docetaxel</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Doxorubicin</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Epirubicin</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Fluorouracil</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Gemcitabin</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Karboplatin</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Oxaliplatin</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Paklitaxel</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="control-label col-sm-3">Annan</label>
-                            <div class="col-xs-3">
-                                <input type="checkbox" />
+                                <input type="text" class="form-control" />
                             </div>
                         </div>
                     </div>
-                    <br />
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Extern radioterapi mot primärtumör eller lokalrecidiv</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="extern" onchange="externrad()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="ext" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Totaldos</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Antal fraktioner</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Kemo-/systemterapi</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="kemosys" onchange="pallkem()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display:none" class="container-fluid" id="pallkembeh">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">1:a linjens palliativa behandling</label>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="forsta" onchange="forstlin()">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="forstalinjen" style="display:none">
+                            <div class="row form-group">
+                                <label class="control-label col-sm-3">Regim</label>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">många</option>
+                                        <option value="2">regimer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
                         <div class="row form-group">
                             <label class="control-label col-sm-3">2:a linjens palliativa behandling</label>
                             <div class="col-xs-3">
@@ -604,95 +506,14 @@
                             </div>
                         </div>
                         <div id="andralinjen" style="display:none">
-                            <div class="text-capitalize h4">Preparat</div>
                             <div class="row form-group">
-                                <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
+                                <label class="control-label col-sm-3">Regim</label>
                                 <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Cisplatin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Docetaxel</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Doxorubicin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Epirubicin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Fluorouracil</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Gemcitabin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Karboplatin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Oxaliplatin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Paklitaxel</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Annan</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">många</option>
+                                        <option value="2">regimer</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -708,656 +529,306 @@
                             </div>
                         </div>
                         <div id="tredjelinjen" style="display:none">
-                            <div class="text-capitalize h4">Preparat</div>
                             <div class="row form-group">
-                                <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
+                                <label class="control-label col-sm-3">Regim</label>
                                 <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Cisplatin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Docetaxel</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Doxorubicin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Epirubicin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Fluorouracil</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Gemcitabin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Karboplatin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Oxaliplatin</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Paklitaxel</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label class="control-label col-sm-3">Annan</label>
-                                <div class="col-xs-3">
-                                    <input type="checkbox" />
+                                    <select class="form-control">
+                                        <option value="0">--Välj--</option>
+                                        <option value="1">många</option>
+                                        <option value="2">regimer</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <br />
-                    
+
+                    </div>
                 </div>
+            </div>
+        </div>
+    
+
+    <div style="display:none" id="definitivkemo" class="center-block">
+        <div style="width:70%" class="center-block">
+            <ul class="nav nav-justified navbar-default nav-tabs" style="width:30%">
+                <li role="presentation" class="active"><a href="Onko.html">Definitiv kemoradioterapi</a></li>
+
+            </ul>
+
+            <br />
+            <button class="btn btn-group-vertical btn-danger" id="btnnodef" onclick="hidedef()">Registrera inte Definitiv Kemoradioterapi </button>
+        </div>
+        <br />
+        <div class="panel panel-default center-block" style="width:70%">
+            <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
+            <div class="panel panel-body">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Initierat av</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
                 </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Inrapportör</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Inrapporterande enhet</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Läkare</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Inrapporteringsdatum</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" placeholder="2016-08-24" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default center-block" style="width:70%" >
+            <div class="panel panel-default panel-heading panel-title">Definitiv kemoradioterapi</div>
+            <div class="panel panel-body">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Definitiv kemoradioterapi</label>
+                    <div class="col-xs-3">
+                        <select class="form-control" id="defkemorad" onchange="definitiv()">
+                            <option value="0">--Välj--</option>
+                            <option value="1">Nej</option>
+                            <option value="2">Ja</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="def" style="display:none">
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Situation</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Primärbehandling</option>
+                                <option value="2">Recidivbehandling</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Startdatum</label>
+                        <div class="col-xs-3">
+                            <input type="date" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Kemoterapi</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="defkem" onchange="kemodef()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="defkemo" class="container-fluid" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Regim</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">många</option>
+                                    <option value="2">regimer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Radioterapi</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="defrad" onchange="raddef()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="defradio" style="display:none">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Totaldos</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Antal fraktioner</label>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Resultat</label>
+                        <div class="col-xs-3">
+                            <select class="form-control">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Komplett remission</option>
+                                <option value="2">Icke-komplett remission</option>
+                                <option value="3">Progress</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="panel panel-default center-block" style="width:70%;display:none" id="definitivkemo">
-        <div class="panel panel-default panel-heading panel-title">Definitiv kemoradioterapi</div>
-        <div class="panel panel-body">
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Definitiv kemoradioterapi</label>
-                <div class="col-xs-3">
-                    <select class="form-control" id="defkemorad" onchange="definitiv()">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Nej</option>
-                        <option value="2">Ja</option>
-                    </select> 
+  
+
+    <div id="uppf" style="display:none" class="center-block">
+        <div style="width:70%" class="center-block">
+            <ul class="nav nav-justified navbar-default nav-tabs" style="width:30%">
+                <li role="presentation" class="active"><a href="Onko.html">Uppföljning</a></li>
+
+            </ul>
+
+            <br />
+            <button class="btn btn-group-vertical btn-danger" id="btnnoupp" onclick="hideupp()">Registrera inte Onkologisk uppföljning </button>
+        </div>
+       
+        <br />
+        <div class="panel panel-default center-block" style="width:70%">
+            <div class="panel panel-default panel-heading panel-title">Inrapporteringsuppgifter</div>
+            <div class="panel panel-body">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Initierat av</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Inrapportör</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Inrapporterande enhet</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Läkare</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">Inrapporteringsdatum</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" placeholder="2016-08-24" />
+                    </div>
                 </div>
             </div>
-            <div id="def" style="display:none">
+        </div>
+        <div class="panel panel-default center-block" style="width:70%">
+            <div class="panel panel-default panel-heading panel-title">Uppföljning</div>
+            <div class="panel panel-body">
+              
+
+                <div >
+                    <div class="row form-group">
+                        <label class="control-label col-sm-3">Recidiv</label>
+                        <div class="col-xs-3">
+                            <select class="form-control" id="onkrec" onchange="onkrecidiv()">
+                                <option value="0">--Välj--</option>
+                                <option value="1">Nej</option>
+                                <option value="2">Ja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="recidiv" style="display:none" class="container-fluid">
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Datum</label>
+                            <div class="col-xs-3">
+                                <input type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Lokalrecidiv</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Regionalt</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="control-label col-sm-3">Fjärrmetastas</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group" id="kirsalvage">
+                            <label class="control-label col-sm-3">Kirurgi (salvage)</label>
+                            <div class="col-xs-3">
+                                <select class="form-control">
+                                    <option value="0">--Välj--</option>
+                                    <option value="1">Nej</option>
+                                    <option value="2">Ja</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">Situation</label>
+                    <label class="control-label col-sm-3">Inklusion i studie</label>
                     <div class="col-xs-3">
                         <select class="form-control">
                             <option value="0">--Välj--</option>
-                            <option value="1">Primärbehandling</option>
-                            <option value="2">Recidivbehandling</option>
+                            <option value="1">Nej</option>
+                            <option value="2">Ja</option>
                         </select>
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">Startdatum</label>
+                    <label class="control-label col-sm-3">Avliden</label>
+                    <div class="col-xs-3">
+                        <select class="form-control" id="avl" onchange="avlid()">
+                            <option value="0">--Välj--</option>
+                            <option value="1">Nej</option>
+                            <option value="2">Ja</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group" id="avliden" style="display:none">
+                    <label class="control-label col-sm-3">Datum</label>
                     <div class="col-xs-3">
                         <input type="date" class="form-control" />
                     </div>
-                </div>
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Kemoterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="defkem" onchange="kemodef()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="defkemo" class="container-fluid" style="display:none">
-                    <div class="text-capitalize h4">Preparat</div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Cisplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Docetaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Doxorubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Epirubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Fluorouracil</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Gemcitabin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Karboplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Oxaliplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Paklitaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Annan</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Radioterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="defrad" onchange="raddef()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="defradio" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Resultat</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" >
-                            <option value="0">--Välj--</option>
-                            <option value="1">Komplett remission</option>
-                            <option value="2">Icke-komplett remission</option>
-                            <option value="3">Progress</option>
-                        </select>
-                    </div>
-                </div>
-              
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default center-block" style="width:70%">
-        <div class="panel panel-default panel-heading panel-title">Adjuvant behandling</div>
-        <div class="panel panel-body">
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Adjuvant behandling given</label>
-                <div class="col-xs-3">
-                    <select class="form-control" id="adj" onchange="adjuv()">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Nej</option>
-                        <option value="2">Ja</option>
-                    </select>
-                </div>
-            </div>
-            <div id="adjbeh" style="display:none">
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Kemoradioterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="kemoradadj" onchange="kradj()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="adjkemorad" style="display:none" class="container-fluid">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum kemoterapi</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="text-capitalize h4">Preparat</div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
-                        <div class="col-xs-3">
-                           <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Cisplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Docetaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Doxorubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Epirubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Fluorouracil</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Gemcitabin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Karboplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Oxaliplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Paklitaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Annan</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <br />
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum radioterapi</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <br />
-                </div>
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Kemoteraoi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="kemoadj" onchange="kadj()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="adjkemo" class="container-fluid" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum kemoterapi</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="text-capitalize h4">Preparat</div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Capecitabin (Xeloda)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Cisplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Docetaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Doxorubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Epirubicin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Fluorouracil</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Gemcitabin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Irinotekan (Campto)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Karboplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Oxaliplatin</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Paklitaxel</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Trastuzumab (Herceptin)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">S-1 - tegafur, gimeracil, oteracil (Teysuno)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Ramucirumab (Cyramza)</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Annan</label>
-                        <div class="col-xs-3">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                    <br />
-                </div>
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Radioterapi</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="radioadj" onchange="radj()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="adjradio" class="container-fluid" style="display:none">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Startdatum radioterapi</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Totaldos</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Antal fraktioner</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default center-block" style="width:70%" >
-        <div class="panel panel-default panel-heading panel-title">Uppföljning</div>
-        <div class="panel panel-body">
-          
-            <div id="upp" >
-                <div class="row form-group">
-                    <label class="control-label col-sm-3">Recidiv</label>
-                    <div class="col-xs-3">
-                        <select class="form-control" id="onkrec" onchange="onkrecidiv()">
-                            <option value="0">--Välj--</option>
-                            <option value="1">Nej</option>
-                            <option value="2">Ja</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="recidiv" style="display:none" class="container-fluid">
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Datum</label>
-                        <div class="col-xs-3">
-                            <input type="date" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Lokalrecidiv</label>
-                        <div class="col-xs-3">
-                            <select class="form-control">
-                                <option value="0">--Välj--</option>
-                                <option value="1">Nej</option>
-                                <option value="2">Ja</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Regionalt</label>
-                        <div class="col-xs-3">
-                            <select class="form-control">
-                                <option value="0">--Välj--</option>
-                                <option value="1">Nej</option>
-                                <option value="2">Ja</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label class="control-label col-sm-3">Fjärrmetastas</label>
-                        <div class="col-xs-3">
-                            <select class="form-control">
-                                <option value="0">--Välj--</option>
-                                <option value="1">Nej</option>
-                                <option value="2">Ja</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row form-group" id="kirsalvage">
-                        <label class="control-label col-sm-3">Kirurgi (salvage)</label>
-                        <div class="col-xs-3">
-                            <select class="form-control">
-                                <option value="0">--Välj--</option>
-                                <option value="1">Nej</option>
-                                <option value="2">Ja</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Inklusion i studie</label>
-                <div class="col-xs-3">
-                    <select class="form-control">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Nej</option>
-                        <option value="2">Ja</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row form-group">
-                <label class="control-label col-sm-3">Avliden</label>
-                <div class="col-xs-3">
-                    <select class="form-control" id="avl" onchange="avlid()">
-                        <option value="0">--Välj--</option>
-                        <option value="1">Nej</option>
-                        <option value="2">Ja</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row form-group" id="avliden" style="display:none">
-                <label class="control-label col-sm-3">Datum</label>
-                <div class="col-xs-3">
-                    <input type="date" class="form-control" />
                 </div>
             </div>
         </div>
