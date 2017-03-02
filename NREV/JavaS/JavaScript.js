@@ -555,3 +555,60 @@ function onkrecidiv() {
         document.getElementById("recidiv").style.display = "none";
     }
 }
+function showadju() {
+    if (document.getElementById("btnadju").onclick) {
+        document.getElementById("adjuvant").style.display = "block";
+    }
+    else {
+        document.getElementById("adjuvant").style.display = "none";
+    }
+}
+function showpall() {
+    if (document.getElementById("btnpall").onclick) {
+        document.getElementById("pall").style.display = "block";
+    }
+    else {
+        document.getElementById("pall").style.display = "none";
+    }
+}
+function showdef() {
+    if (document.getElementById("btndef").onclick) {
+        document.getElementById("definitivkemo").style.display = "block";
+    }
+    else {
+        document.getElementById("definitivkemo").style.display = "none";
+    }
+}
+function showupp() {
+    if (document.getElementById("btnupp").onclick) {
+        document.getElementById("uppf").style.display = "block";
+    }
+    else {
+        document.getElementById("uppf").style.display = "none";
+    }
+}
+function hideadju() {
+    if (document.getElementById("btnoadju").onclick) {
+        document.getElementById("adjuvant").style.display = "none";
+    }
+    
+}
+function hidedef() {
+    if (document.getElementById("btnnodef").onclick) {
+        document.getElementById("definitivkemo").style.display = "none";
+    }
+
+}
+function hidepall() {
+    if (document.getElementById("btnnopall").onclick) {
+        document.getElementById("pall").style.display = "none";
+    }
+
+}
+function hideupp() {
+    if (document.getElementById("btnnoupp").onclick) {
+        document.getElementById("uppf").style.display = "none";
+    }
+
+}
+
